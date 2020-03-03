@@ -11,6 +11,56 @@
 
 
   <script>
+	  
+	  const moves = ['rock', 'paper', 'scissors']
+	  
+	  function computerPlay() {
+		  return moves[Math.floor(Math.random() * 3)]		  
+	  }
+	  
+	  function playerPlay() {
+		  playerChoice = prompt("Enter rock, paper, or scissors: ")
+		  return playerChoice.toLowerCase()
+	  }
+	  
+	  function playRound(playerSelection = playerPlay(), computerSelection = computerPlay()) {
+		  console.log(playerSelection)
+		  console.log(computerSelection)
+		  if (playerSelection == computerSelection) {
+			  console.log("Draw!")
+		  } else {
+			  if (checkPlayerWin(playerSelection, computerSelection)) {
+				  console.log(`You win, ${playerSelection} beats ${computerSelection}!`)
+			  } else {
+				  console.log(`You lose, ${computerSelection} beats ${playerSelection}!`)
+			  }
+		  }
+	  }
+	  
+	  function checkPlayerWin(playerSelection, computerSelection) {
+		  if (playerSelection == "rock") {
+			  if (computerSelection == "scissors") { 
+				  return true
+			  } else { return false }
+		  } else if (playerSelection == "paper") {
+			  if (computerSelection == "rock") {
+				  return true
+			  } else { return false }
+		  } else if (playerSelection == "scissors") {
+			  if (computerSelection == "paper") {
+				  return true
+			  } else { return false }
+		  }
+	  }
+		  
+	  
+	  function game() {
+		  for (i = 0; i < 5; i++) {
+			  console.log(playRound())
+		  }
+	  }
+	  
+	  
 	
   </script>
 </body>
